@@ -17,19 +17,46 @@
     <span><i class="fas fa-bed"></i>Hoteles</span>
     <div id="container">
     <div id="container-destination">
+        <p>Hotel o Destino</p>
         <input placeholder="Destination, resort or hotel?" type="text" value="">
     </div>
 
     <div id="container-date">
-        <input type="date" id="date" name="trip-start"
-        min="2020-01-01" max="2020-12-31">
+        <p>Fecha de entrada</p>
+        <input type="date" id="datereserve">
     </div>
 
     <div id="container-nights">
-        <input type="text" value="Nights">
+        <p>Número de noches</p>
+        <select name="noches" id="noches">
+            <option hidden selected>0 Noches</option>
+            <optgroup label="COMUNES">
+                <option value="">4 Noches</option>
+                <option value="">7 Noches</option>
+                <option value="">10 Noches</option>
+                <option value="">14 Noches</option>
+            </optgroup>
+            <optgroup label="DIARIAS">
+                <option value="">1 Noches</option>
+                <option value="">2 Noches</option>
+                <option value="">3 Noches</option>
+                <option value="">4 Noches</option>
+                <option value="">5 Noches</option>
+                <option value="">6 Noches</option>
+                <option value="">7 Noches</option>
+                <option value="">8 Noches</option>
+                <option value="">9 Noches</option>
+                <option value="">10 Noches</option>
+                <option value="">11 Noches</option>
+                <option value="">12 Noches</option>
+                <option value="">13 Noches</option>
+                <option value="">14 Noches</option>
+            </optgroup>
+        </select>
     </div>
 
     <div id="container-room">
+        <p>Habitaciones</p>
         <input type="text" value="Rooms & Quests">
     </div>
 

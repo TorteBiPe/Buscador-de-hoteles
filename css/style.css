@@ -2,21 +2,39 @@ html{
     margin: 0;
 
 }
+
 body
 {
     height: 100%;
     margin: 0;
     
 }
+
+header,footer{
+    background-color: rgb(57,60,122);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+main{
+    min-height:78.5% ;
+}
+
 #container{
     display: flex;
     flex-direction: row;
     background-color: darkorange;
 }
+
 #container div{
     margin: 5px;
     background-color: white;
 }
+
 #buttonsearch {
     width: 100px;
     height: 40px;

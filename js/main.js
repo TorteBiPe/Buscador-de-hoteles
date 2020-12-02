@@ -1,4 +1,4 @@
-//Date
+//-----------------------------------DATE-----------------------------------------------------------
 function date() {
     let today = new Date(),
         day = today.getDate(),
@@ -21,18 +21,39 @@ function date() {
 }
 date();
 
-//--------------------------------------------------------------------------------------------------
+//-----------------------------------NIGHTS---------------------------------------------------------
+
+
+
+//-----------Constructor-------------
+
+function createPopoverNight() {
+
+    let popoverroom = document.getElementById("roompopover");
+    popoverroom.remove();
+    popoverroom.classList.remove("d-none");
+   let container=$("#container-room");
+    container.popover({
+        placement: "bottom",
+        content:popoverroom ,
+        html: true
+    })
+    container.on('hide.bs.popover',placeholder);
+    
+}
+
+//-----------------------------------ROOMS----------------------------------------------------------
 
 document.getElementById("addroom").addEventListener("click", addRoom);
 document.getElementById("donebutton").addEventListener("click", closepopover);
 placeholder();
 addRoom();
-createPopover();
+createPopoverRoom();
 
 //-----------Constructor-------------
 
 
-function createPopover() {
+function createPopoverRoom() {
 
     let popoverroom = document.getElementById("roompopover");
     popoverroom.remove();

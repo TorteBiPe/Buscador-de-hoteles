@@ -24,9 +24,28 @@ date();
 //--------------------------------------------------------------------------------------------------
 
 document.getElementById("addroom").addEventListener("click", addRoom);
+document.getElementById("donebutton").addEventListener("click", closepopover);
+placeholder();
 addRoom();
+createPopover();
 
 //-----------Constructor-------------
+
+
+function createPopover() {
+
+    let popoverroom = document.getElementById("roompopover");
+    popoverroom.remove();
+    popoverroom.classList.remove("d-none");
+   let container=$("#container-room");
+    container.popover({
+        placement: "bottom",
+        content:popoverroom ,
+        html: true
+    })
+    container.on('hide.bs.popover',placeholder);
+    
+}
 
 function createRoom(addremovebutton) {
 
@@ -49,7 +68,8 @@ function createRoom(addremovebutton) {
     adultlabel.textContent = "Adultos";
     childrenlabel.textContent = "Niños";
     childrenselect.addEventListener("change", updateAgesSelects);
-
+    /* childrenselect.addEventListener("change", placeholder);
+    adultselect.addEventListener("change", placeholder); */
 
     if (addremovebutton) {
         let removeroom = document.createElement("div");
@@ -80,6 +100,27 @@ function createSelect(options) {
     return select;
 }
 
+//----------------Room------------------------------------
+
+function addRoom() {
+    let numrom = document.querySelectorAll(".room").length;
+    let room = createRoom(numrom >= 1);
+    document.getElementById("buttons").before(room);
+    updateRoomTitle(room,numrom);
+    /* placeholder() */
+
+
+}
+
+function deleteRoom(event) {
+
+    let room = event.target.closest(".room");
+    room.remove();
+    document.querySelectorAll(".room").forEach(updateRoomTitle);//El foreach le pasa los dos parametros
+    /* placeholder(); */
+
+}
+
 function updateAgesSelects(event) {
 
     let select = event.target;
@@ -96,21 +137,26 @@ function updateAgesSelects(event) {
 
 }
 
-//----------------Room------------------------------------
+function updateRoomTitle(room,roomindex){
 
-function addRoom() {
-    let numrom=document.querySelectorAll(".room").length;
-    let room = createRoom(numrom>=1);
-    document.getElementById("buttons").before(room);
-
+    room.querySelector(".title").textContent=`${roomindex+1} Habitación`;
 
 }
 
-function deleteRoom(event) {
+function placeholder(){
+    let rooms=document.querySelectorAll(".room");
+    let numrooms=rooms.length;
+    let numperson=0;
 
-    let room = event.target.closest(".room");
-    room.remove();
-
+    rooms.forEach(room=>{
+        numperson += parseInt(room.querySelector(".adult select").value);
+        numperson += parseInt(room.querySelector(".children select").value);
+    })
+    document.getElementById("placeholder").value=`${numrooms} rooms & ${numperson} guest`
 }
 
+function closepopover(){
+    $("#container-room").popover('hide');
 
+    
+}

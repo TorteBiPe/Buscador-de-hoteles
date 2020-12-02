@@ -23,25 +23,36 @@ date();
 
 //-----------------------------------NIGHTS---------------------------------------------------------
 
-
+/* createPopoverNight(); */
 
 //-----------Constructor-------------
-
+/* 
 function createPopoverNight() {
 
-    let popoverroom = document.getElementById("roompopover");
-    popoverroom.remove();
-    popoverroom.classList.remove("d-none");
-   let container=$("#container-room");
+    let popovernight = document.getElementById("nightpoppover");
+    popovernight.remove();
+    popovernight.classList.remove("d-none"); 
+   let container=$("#container-nights");
     container.popover({
         placement: "bottom",
-        content:popoverroom ,
+        content:popovernight ,
         html: true
     })
-    container.on('hide.bs.popover',placeholder);
+    container.on('hide.bs.popover',placeholderNight); 
     
 }
 
+function placeholderNight(){
+    let nights=document.querySelectorAll(".nights option");
+    let numrooms=rooms.length;
+    let numperson=0;
+
+    nights.forEach(night=>{
+        numnight += parseInt(night.querySelector(".nightpoppover select").value);
+    })
+    document.getElementById("placeholderNight").value=`${numnight} Noches`
+}
+ */
 //-----------------------------------ROOMS----------------------------------------------------------
 
 document.getElementById("addroom").addEventListener("click", addRoom);
@@ -129,7 +140,6 @@ function addRoom() {
     document.getElementById("buttons").before(room);
     updateRoomTitle(room,numrom);
     /* placeholder() */
-
 
 }
 
